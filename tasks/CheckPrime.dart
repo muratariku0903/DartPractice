@@ -1,8 +1,9 @@
 import 'dart:io';
+import '../utils/index.dart';
 
 void main(List<String> args) {
   stdout.write('Please input number : ');
-  int inputNum = getNum();
+  int inputNum = getInputNum();
   bool isPrime = check(inputNum);
   print(isPrime ? 'Prime' : 'Not Prime');
 }
@@ -19,17 +20,4 @@ bool check(int checkNum) {
   }
 
   return isPrime;
-}
-
-int getNum() {
-  int inputNum;
-
-  try {
-    inputNum = int.parse(stdin.readLineSync()!);
-  } catch (e) {
-    stdout.write('Please input valid number : ');
-    inputNum = getNum();
-  }
-
-  return inputNum;
 }
