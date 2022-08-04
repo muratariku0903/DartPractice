@@ -9,7 +9,7 @@ int getInputNum({int? min, int? max}) {
     if (!isValid) throw ('');
   } catch (e) {
     stdout.write('Please input valid number : ');
-    inputNum = getInputNum(min, max: max);
+    inputNum = getInputNum(min: min, max: max);
   }
 
   return inputNum;
