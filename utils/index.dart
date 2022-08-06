@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 int getInputNum({int? min, int? max}) {
   int inputNum;
@@ -13,6 +14,23 @@ int getInputNum({int? min, int? max}) {
   }
 
   return inputNum;
+}
+
+List<int> getRandomNums({int min: 0, int max: 100, int len: 10}) {
+  List<int> nums = [];
+  
+  if (min > max) {
+    print('Please min <= max');
+    return nums;
+  }
+
+  final random = Random();
+  for (var i = 0; i < len; i++) {
+    int randomNum = random.nextInt(max + 1 - min) + min;
+    nums.add(randomNum);
+  }
+
+  return nums;
 }
 
 bool validateInputNum(int? min, int? max, int inputNum) {
