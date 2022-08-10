@@ -18,7 +18,7 @@ int getInputNum({int? min, int? max}) {
 
 List<int> getRandomNums({int min: 0, int max: 100, int len: 10}) {
   List<int> nums = [];
-  
+
   if (min > max) {
     print('Please min <= max');
     return nums;
@@ -31,6 +31,32 @@ List<int> getRandomNums({int min: 0, int max: 100, int len: 10}) {
   }
 
   return nums;
+}
+
+int getRandomNumWithDigit({int digit: 1}) {
+  if (digit <= 0) throw ('Invalid digit');
+
+  final random = Random();
+  int randomNum = 0;
+  for (var i = 0; i < digit; i++) {
+    int digitNum = random.nextInt(10);
+    bool isLastDigit = digit - 1 == i;
+    while (isLastDigit && digitNum == 0) digitNum = random.nextInt(10);
+    randomNum += digitNum * pow(10, i).toInt();
+  }
+
+  return randomNum;
+}
+
+int getRandomNumWithDigit2({int digit: 1}) {
+  int max = pow(10, digit).toInt();
+  int min = digit == 1 ? 0 : max ~/ 10;
+
+  return getRandomWithRange(min, max);
+}
+
+int getRandomWithRange(int min, int max) {
+  return Random().nextInt(max - min) + min;
 }
 
 bool validateInputNum(int? min, int? max, int inputNum) {
